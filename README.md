@@ -1,5 +1,8 @@
 project2
 ========
+#install necessary export package
+install.packages("WriteXLS")
+
 #create an empty plate
 plate <- matrix(data=NA, nrow=8, ncol=12)
 plate <- as.table(plate)
@@ -35,7 +38,9 @@ if(std=="Y"){
    plate.std <- sort(plate.std)
    plate[1:number.standards] <- plate.std
 #adding non-template controls
-   plate[1:rep.std,num.std+1] <- "NTC"
+   num.NTC <- number.standards+rep.std+1
+   NTC.start <- number.standards+1
+   plate[NTC.start:num.NTC] <- "NTC"
 #add samples
    sample.names <- readline("Input the names of each sample and separate each with a comma: ")
    sample.rep <- readline("How many times will you be replicating each sample in the plate? ")
@@ -49,13 +54,20 @@ if(std=="Y"){
    samples <- c(samples, split.names)
    } 
    sorted.samples <- sort(samples)
-   
+   samples.start <- num.NTC+1
+   samples.end <- num.NTC+num.samples
+   plate[samples.start:samples.end] <- sorted.samples
 } else {
    num.std == 0
    rep.std == 0 
    }
 probe <- readline("Will there be more than one probe used? ")
 
+}
+
+
+
 if(std=="N"){
 
+write.csv(plate, "platemap.csv")
 }#end
