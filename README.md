@@ -18,7 +18,8 @@ if(std=="Y"){
    mul.std <- as.numeric(mul.std)
    rep.std <- readline("How many times will the standards be replicated? ")
    rep.std <- as.numeric(rep.std)
-
+   number.standards <- rep.std*num.std
+   
    plate.std <- c(start.std)
    num.std <- num.std-1
    x <- start.std
@@ -26,16 +27,35 @@ if(std=="Y"){
    x <- x*mul.std
    plate.std <- c(plate.std, x)
    }
-   num.std <- num.std+1
-   plate.std <- matrix(plate.std, nrow=rep.std, ncol=num.std, byrow=TRUE)
-   plate[1:rep.std,1:num.std] <- plate.std
+   add.std <- plate.std
+   rep.std <- rep.std - 1
+   for(i in 1:rep.std){ 
+   plate.std <- c(plate.std, add.std)
+   }
+   plate.std <- sort(plate.std)
+   plate[1:number.standards] <- plate.std
 #adding non-template controls
    plate[1:rep.std,num.std+1] <- "NTC"
+#add samples
+   sample.names <- readline("Input the names of each sample and separate each with a comma: ")
+   sample.rep <- readline("How many times will you be replicating each sample in the plate? ")
+   sample.rep <- as.numeric(sample.rep)
+   split.names <- strsplit(sample.names, ",")
+   split.names <- unlist(split.names)
+   num.samples <- length(split.names)*sample.rep
+   sample.rep <- sample.rep-1
+   samples <- split.names
+   for(i in 1:sample.rep){ 
+   samples <- c(samples, split.names)
+   } 
+   sorted.samples <- sort(samples)
    
 } else {
    num.std == 0
    rep.std == 0 
    }
-probe <- readline("What probe will you be using? ")
+probe <- readline("Will there be more than one probe used? ")
+
+if(std=="N"){
 
 }#end
