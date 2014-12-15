@@ -17,6 +17,18 @@ if(std=="Y"){
    mul.std <- as.numeric(mul.std)
    rep.std <- readline("How many times will the standards be replicated? ")
    rep.std <- as.numeric(rep.std)
+
+   plate.std <- c(start.std)
+   num.std <- num.std-1
+   x <- start.std
+   for(i in 1:num.std){
+   x <- x*mul.std
+   plate.std <- c(plate.std, x)
+   }
+   num.std <- num.std+1
+   plate.std <- matrix(plate.std, nrow=rep.std, ncol=num.std, byrow=TRUE)
+   plate[1:rep.std,1:num.std] <- plate.std
+   
 } else {
    num.std == 0
    rep.std == 0 
