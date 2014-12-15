@@ -9,6 +9,13 @@ colnames(plate) <- 1:12
 fill.plate <- function() {
 #filling standards
 std <- readline("Will there be standards (Answer Y or N)? ")
+probe <- readline("Will there be more than one probe used (Answer Y or N)? ")
+   if(probe == "N"){
+   probe.name <- readline("What probe will be used? ")
+   } else {
+   probe1 <- readline("What is the first probe name? ")
+   probe2 <- readline("What is the second probe name?")
+   }
 if(std=="Y"){
    num.std <- readline("How many standards will there be? ")
    num.std <- as.numeric(num.std)
@@ -19,6 +26,8 @@ if(std=="Y"){
    rep.std <- readline("How many times will the standards be replicated? ")
    rep.std <- as.numeric(rep.std)
    number.standards <- rep.std*num.std
+   
+   paste(split.names, "probe", sep=" ")
    
    plate.std <- c(start.std)
    num.std <- num.std-1
@@ -58,13 +67,11 @@ if(std=="Y"){
    num.std == 0
    rep.std == 0 
    }
-probe <- readline("Will there be more than one probe used? ")
-
-}
-
 
 
 if(std=="N"){
 
 write.csv(plate, "platemap.csv")
-}#end
+}
+
+}#endfunction
