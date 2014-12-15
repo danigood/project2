@@ -7,6 +7,7 @@ colnames(plate) <- 1:12
 
 #make function to fill the table according to specific instructions
 fill.plate <- function() {
+#filling standards
 std <- readline("Will there be standards (Answer Y or N)? ")
 if(std=="Y"){
    num.std <- readline("How many standards will there be? ")
@@ -28,6 +29,8 @@ if(std=="Y"){
    num.std <- num.std+1
    plate.std <- matrix(plate.std, nrow=rep.std, ncol=num.std, byrow=TRUE)
    plate[1:rep.std,1:num.std] <- plate.std
+#adding non-template controls
+   plate[1:rep.std,num.std+1] <- "NTC"
    
 } else {
    num.std == 0
