@@ -6,7 +6,7 @@ plate <- as.table(plate)
 colnames(plate) <- 1:12
 
 #make function to fill the table according to specific instructions
-fill.plate <- function() {
+fill.plate <- function(plate) {
 #filling standards
 std <- readline("Will there be standards (Answer Y or N)? ")
 probe <- readline("Will there be more than one probe used (Answer Y or N)? ")
@@ -27,8 +27,6 @@ if(std=="Y"){
    rep.std <- as.numeric(rep.std)
    number.standards <- rep.std*num.std
    
-   paste(split.names, "probe", sep=" ")
-   
    plate.std <- c(start.std)
    num.std <- num.std-1
    x <- start.std
@@ -42,6 +40,7 @@ if(std=="Y"){
    plate.std <- c(plate.std, add.std)
    }
    plate.std <- sort(plate.std)
+   paste(plate.std, "probe.name", sep=" ")
    plate[1:number.standards] <- plate.std
 #adding non-template controls
    num.NTC <- number.standards+rep.std+1
@@ -62,11 +61,32 @@ if(std=="Y"){
    sorted.samples <- sort(samples)
    samples.start <- num.NTC+1
    samples.end <- num.NTC+num.samples
+   paste(sorted.samples, "probe.name", sep=" ")
    plate[samples.start:samples.end] <- sorted.samples
-} else {
+} else { 
+#if two probes so no stds
    num.std == 0
-   rep.std == 0 
-   }
+   rep.std == 0
+#adding non-template controls
+   num.NTC <- sample.rep+1
+   plate[1:num.NTC] <- "NTC"
+#add samples
+   sample.names <- readline("Input the names of each sample and separate each with a comma: ")
+   sample.rep <- readline("How many times will you be replicating each sample in the plate? ")
+   sample.rep <- as.numeric(sample.rep)
+   split.names <- strsplit(sample.names, ",")
+   split.names <- unlist(split.names)
+   num.samples <- length(split.names)*sample.rep
+   sample.rep <- sample.rep-1
+   samples <- split.names
+   for(i in 1:sample.rep){ 
+   samples <- c(samples, split.names)
+   } 
+   sorted.samples <- sort(samples)
+   samples.start <- num.NTC+1
+   samples.end <- num.NTC+num.samples
+   paste(sorted.samples, "probe.name", sep=" ")
+   plate[samples.start:samples.end] <- sorted.samples}
 
 
 if(std=="N"){
