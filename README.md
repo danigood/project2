@@ -1,8 +1,5 @@
 project2
 ========
-#install necessary export package
-install.packages("WriteXLS")
-
 #create an empty plate
 plate <- matrix(data=NA, nrow=8, ncol=12)
 plate <- as.table(plate)
