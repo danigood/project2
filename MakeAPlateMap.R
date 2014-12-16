@@ -56,6 +56,16 @@ if(std=="Y"){
 		print('There are too many samples for one plate')
 	}
 	plate[samples.start:samples.end] <- sorted.samples
+	#calculate the master mixes for each
+	primers.probe <- samples.end*1.04*0.2
+	taq <- samples.end*1.04*5
+	water <- samples.end*1.04*2.4
+	cat("For 10 µL reactions where 2 µL of DNA is added to each reaction, the master mix is as follows:","/n")
+	cat("Forward Primer (10 µM):", primers.probe,"µL","\n")
+	cat("Reverse Primer (10 µM):", primers.probe,"µL","\n")
+	cat("Probe (2 µM):", primers.probe,"µL","\n")
+	cat("2x Taqman:", taq,"µL","\n")
+	cat("Water:", water,"µL","\n")
 } else { 
 	#if two probes so no stds
 	num.std <- 0
@@ -90,4 +100,8 @@ if(std=="Y"){
 	}
 	plate[set2.start:set2.end] <- set2 }
 
-#write.csv(plate, "platemap.csv")
+#write file for plate map
+write.csv(plate, "platemap.csv")
+
+
+
