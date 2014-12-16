@@ -14,7 +14,7 @@ probe <- readline("Will there be more than one probe used (Answer Y or N)? ")
    probe.name <- readline("What probe will be used? ")
    } else {
    probe1 <- readline("What is the first probe name? ")
-   probe2 <- readline("What is the second probe name?")
+   probe2 <- readline("What is the second probe name? ")
    }
 if(std=="Y"){
    num.std <- readline("How many standards will there be? ")
@@ -85,13 +85,13 @@ if(std=="Y"){
    sorted.samples <- sort(samples)
    samples.start <- num.NTC+1
    samples.end <- num.NTC+num.samples
-   paste(sorted.samples, "probe.name", sep=" ")
-   plate[samples.start:samples.end] <- sorted.samples}
-
-
-if(std=="N"){
+   set1 <- paste(sorted.samples, probe1, sep=" ")
+   set2 <- paste(sorted.samples, probe2, sep=" ")
+   plate[samples.start:samples.end] <- set1
+   set2.start <- samples.end+1
+   set2.end <- samples.end+num.samples
+   plate[set2.start:set2.end] <- set2 
 
 write.csv(plate, "platemap.csv")
-}
 
 }#endfunction
