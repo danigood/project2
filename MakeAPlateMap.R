@@ -52,6 +52,9 @@ if(std=="Y"){
 	samples.start <- num.NTC+1
 	samples.end <- num.NTC+num.samples
 	paste(sorted.samples, probe.name, sep=" ")
+	if(samples.end > 96){
+		print('There are too many samples for one plate')
+	}
 	plate[samples.start:samples.end] <- sorted.samples
 } else { 
 	#if two probes so no stds
@@ -82,6 +85,9 @@ if(std=="Y"){
 	plate[samples.start:samples.end] <- set1
 	set2.start <- samples.end+1
 	set2.end <- samples.end+num.samples
+	if(set2.end > 96){
+		print('There are too many samples for one plate')
+	}
 	plate[set2.start:set2.end] <- set2 }
 
-write.csv(plate, "platemap.csv")
+#write.csv(plate, "platemap.csv")
