@@ -60,12 +60,14 @@ if(std=="Y"){
 	primers.probe <- samples.end*1.04*0.2
 	taq <- samples.end*1.04*5
 	water <- samples.end*1.04*0.4
-	cat("For 10 µL reactions where 4 µL of DNA is added to each reaction, the master mix is as follows:","/n")
-	cat("Forward Primer (10 µM):", primers.probe,"µL","\n")
-	cat("Reverse Primer (10 µM):", primers.probe,"µL","\n")
-	cat("Probe (2 µM):", primers.probe,"µL","\n")
-	cat("2x Taqman:", taq,"µL","\n")
-	cat("Water:", water,"µL","\n")
+	master.mix.mE1A <- matrix(data = NA, nrow = 7, ncol = 3)
+	master.mix.mE1A[1,1] <- c("For 10 µL reactions where 2 µL of DNA is added to each reaction, the master mix is as follows:")
+	master.mix.mE1A[2,1] <- c(probe.name)
+	master.mix.mE1A[3,1:3] <- c("Forward Primer (10 µM):", primers.probe,"µL")
+	master.mix.mE1A[4,1:3] <-c("Reverse Primer (10 µM):", primers.probe,"µL")
+	master.mix.mE1A[5,1:3] <-c("Probe (2 µM):", primers.probe,"µL")
+	master.mix.mE1A[6,1:3] <-c("2x Taqman:", taq,"µL")
+	master.mix.mE1A[7,1:3] <-c("Water:", water,"µL")
 } else { 
 	#if two probes so no stds
 	num.std <- 0
@@ -103,17 +105,20 @@ if(std=="Y"){
 primers.probe <- (samples.end-3)*1.04*0.2
 taq <- (samples.end-3)*1.04*5
 water <- (samples.end-3)*1.04*2.4
-cat("For 10 µL reactions where 2 µL of DNA is added to each reaction, the master mix is as follows:","/n")
-cat("mE1A":,"/n","Forward Primer (10 µM):", primers.probe,"µL","\n")
-cat("Reverse Primer (10 µM):", primers.probe,"µL","\n")
-cat("Probe (2 µM):", primers.probe,"µL","\n")
-cat("2x Taqman:", taq,"µL","\n")
-cat("Water:", water,"µL","\n") 
+master.mix <- matrix(data = NA, nrow = 11, ncol = 3)
+master.mix[1,1] <- c("For 10 µL reactions where 2 µL of DNA is added to each reaction, the master mix is as follows:")
+master.mix[2,1] <- c(probe1)
+master.mix[3,1:3] <- c("Forward Primer (10 µM):", primers.probe,"µL")
+master.mix[4,1:3] <-c("Reverse Primer (10 µM):", primers.probe,"µL")
+master.mix[5,1:3] <-c("Probe (2 µM):", primers.probe,"µL")
+master.mix[6,1:3] <-c("2x Taqman:", taq,"µL")
+master.mix[7,1:3] <-c("Water:", water,"µL") 
 GAPDHprimprob <- (samples.end-3)*1.04*0.5
 GAPDHwater <- (samples.end-3)*1.04*2.5
-cat("GAPDH":,"/n","Primer/Probe Mix", GAPDHprimprob,"µL","\n")
-cat("2x Taqman:", taq,"µL","\n")
-cat("Water:", GAPDHwater,"µL","\n") }
+master.mix[8,1] <- c(probe2)
+master.mix[9,1:3] <- cat("Primer/Probe Mix", GAPDHprimprob,"µL")
+master.mix[10,1:3] <- cat("2x Taqman:", taq,"µL")
+master.mix[11,1:3] <- cat("Water:", GAPDHwater,"µL") }
 
 #write file for plate map
 write.csv(plate, "platemap.csv") 
