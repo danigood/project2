@@ -5,17 +5,16 @@ plate <- matrix(data=NA, nrow=8, ncol=12)
 plate <- as.table(plate)
 colnames(plate) <- 1:12
 
-#make function to fill the table according to specific instructions
-fill.plate <- function(plate) {
-#filling standards
-std <- readline("Will there be standards (Answer Y or N)? ")
-probe <- readline("Will there be more than one probe used (Answer Y or N)? ")
+probe <- readline("Will there be more than one probe used Y or N? ")
+   
    if(probe == "N"){
    probe.name <- readline("What probe will be used? ")
    } else {
    probe1 <- readline("What is the first probe name? ")
-   probe2 <- readline("What is the second probe name? ")
-   }
+   probe2 <- readline("What is the second probe name? ") }
+
+std <- readline("Will there be standards Y or N? ")
+
 if(std=="Y"){
    num.std <- readline("How many standards will there be? ")
    num.std <- as.numeric(num.std)
@@ -90,8 +89,8 @@ if(std=="Y"){
    plate[samples.start:samples.end] <- set1
    set2.start <- samples.end+1
    set2.end <- samples.end+num.samples
-   plate[set2.start:set2.end] <- set2 
+   plate[set2.start:set2.end] <- set2 }
 
-write.csv(plate, "platemap.csv")
+#write.csv(plate, "platemap.csv")
 
-}#endfunction
+#}#endfunction
