@@ -65,15 +65,15 @@ if(std=="Y"){
    plate[samples.start:samples.end] <- sorted.samples
 } else { 
 #if two probes so no stds
-   num.std == 0
-   rep.std == 0
+   num.std <- 0
+   rep.std <- 0
+   sample.rep <- readline("How many times will you be replicating each sample in the plate? ")
+   sample.rep <- as.numeric(sample.rep)
 #adding non-template controls
-   num.NTC <- sample.rep+1
+   num.NTC <- (sample.rep)*2
    plate[1:num.NTC] <- "NTC"
 #add samples
    sample.names <- readline("Input the names of each sample and separate each with a comma: ")
-   sample.rep <- readline("How many times will you be replicating each sample in the plate? ")
-   sample.rep <- as.numeric(sample.rep)
    split.names <- strsplit(sample.names, ",")
    split.names <- unlist(split.names)
    num.samples <- length(split.names)*sample.rep
