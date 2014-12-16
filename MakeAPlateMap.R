@@ -59,8 +59,8 @@ if(std=="Y"){
 	#calculate the master mixes for each
 	primers.probe <- samples.end*1.04*0.2
 	taq <- samples.end*1.04*5
-	water <- samples.end*1.04*2.4
-	cat("For 10 µL reactions where 2 µL of DNA is added to each reaction, the master mix is as follows:","/n")
+	water <- samples.end*1.04*0.4
+	cat("For 10 µL reactions where 4 µL of DNA is added to each reaction, the master mix is as follows:","/n")
 	cat("Forward Primer (10 µM):", primers.probe,"µL","\n")
 	cat("Reverse Primer (10 µM):", primers.probe,"µL","\n")
 	cat("Probe (2 µM):", primers.probe,"µL","\n")
@@ -70,7 +70,7 @@ if(std=="Y"){
 	#if two probes so no stds
 	num.std <- 0
 	rep.std <- 0
-	probe1 <- readline("What is the first probe name? ")
+	probe1 <- readline("What is the first probe name (if using mE1A and GAPDH, put mE1A as the first probe)? ")
 	probe2 <- readline("What is the second probe name? ")
 	sample.rep <- readline("How many times will you be replicating each sample in the plate? ")
 	sample.rep <- as.numeric(sample.rep)
@@ -98,10 +98,25 @@ if(std=="Y"){
 	if(set2.end > 96){
 		print('There are too many samples for one plate')
 	}
-	plate[set2.start:set2.end] <- set2 }
+	plate[set2.start:set2.end] <- set2 
+#calculate the master mixes for each
+primers.probe <- (samples.end-3)*1.04*0.2
+taq <- (samples.end-3)*1.04*5
+water <- (samples.end-3)*1.04*2.4
+cat("For 10 µL reactions where 2 µL of DNA is added to each reaction, the master mix is as follows:","/n")
+cat("mE1A":,"/n","Forward Primer (10 µM):", primers.probe,"µL","\n")
+cat("Reverse Primer (10 µM):", primers.probe,"µL","\n")
+cat("Probe (2 µM):", primers.probe,"µL","\n")
+cat("2x Taqman:", taq,"µL","\n")
+cat("Water:", water,"µL","\n") 
+GAPDHprimprob <- (samples.end-3)*1.04*0.5
+GAPDHwater <- (samples.end-3)*1.04*2.5
+cat("GAPDH":,"/n","Primer/Probe Mix", GAPDHprimprob,"µL","\n")
+cat("2x Taqman:", taq,"µL","\n")
+cat("Water:", GAPDHwater,"µL","\n") }
 
 #write file for plate map
-write.csv(plate, "platemap.csv")
+write.csv(plate, "platemap.csv") 
 
 
 
