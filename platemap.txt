@@ -1,0 +1,17 @@
+"1","2","3","4","5","6","7","8","9","10","11","12"
+"A","10","1000","1e+06","1e+09","a","d",NA,NA,NA,NA,NA,NA
+"B","10","10000","1e+06","1e+09","b","d",NA,NA,NA,NA,NA,NA
+"C","10","10000","1e+07","1e+09","b","e",NA,NA,NA,NA,NA,NA
+"D","100","10000","1e+07","NTC","b","e",NA,NA,NA,NA,NA,NA
+"E","100","1e+05","1e+07","NTC","c","e",NA,NA,NA,NA,NA,NA
+"F","100","1e+05","1e+08","NTC","c",NA,NA,NA,NA,NA,NA,NA
+"G","1000","1e+05","1e+08","a","c",NA,NA,NA,NA,NA,NA,NA
+"H","1000","1e+06","1e+08","a","d",NA,NA,NA,NA,NA,NA,NA
+"1",""
+"A","For 10 µL reactions where 2 µL of DNA is added to each reaction, the master mix is as follows:",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"B","m",NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"C","Forward Primer (10 µM):","9.36","µL",NA,NA,NA,NA,NA,NA,NA,NA,NA
+"D","Reverse Primer (10 µM):","9.36","µL",NA,NA,NA,NA,NA,NA,NA,NA,NA
+"E","Probe (2 µM):","9.36","µL",NA,NA,NA,NA,NA,NA,NA,NA,NA
+"F","2x Taqman:","234","µL",NA,NA,NA,NA,NA,NA,NA,NA,NA
+"G","Water:","18.72","µL",NA,NA,NA,NA,NA,NA,NA,NA,NA
