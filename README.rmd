@@ -58,8 +58,8 @@ See a sample of the master mix calculations below:
 	primers.probe <- 48*1.04*0.2
 	taq <- 48*1.04*5
 	water <- 48*1.04*0.4
-	master.mix.mE1A <- matrix(data = NA, nrow = 7, ncol = 12)
-	master.mix.mE1A[1,1] <- c("For 10 µL reactions where 2 µL of DNA is added to each reaction, the master mix is as follows:")
+	master.mix.mE1A <- matrix(data = NA, nrow = 7, ncol = 3)
+	master.mix.mE1A[1,1:3] <- c("For 10 µL reactions where","2 µL of DNA is added to each reaction,", "the master mix is as follows:")
 	master.mix.mE1A[2,1] <- c("mE1A")
 	master.mix.mE1A[3,1:3] <- c("Forward Primer (10 µM):", primers.probe,"µL")
 	master.mix.mE1A[4,1:3] <-c("Reverse Primer (10 µM):", primers.probe,"µL")
@@ -71,5 +71,11 @@ See a sample of the master mix calculations below:
 ```
 
 Extra Features:
-* Will throw an warning message if there are too many samples for one plate.
-* The master mix calculations automatically account for pipetting error.
+
+
++ Will throw an warning message if there are too many samples for one plate.
+
+
++ The master mix calculations automatically account for pipetting error.
+
+To run the program, load the R script file 'MakeAPlateMap.R' into your workspace, empty your global environment, then run using source. Follow the prompts given by the program. Once the program is complete, it will generate a text document titled 'platemap.txt'. This file can be read from R Studio, or you can import it into Excel for further manipulation (choose import > text file > separated by commas).
